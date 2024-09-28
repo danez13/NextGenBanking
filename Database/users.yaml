@@ -1,0 +1,13 @@
+cookie:
+  expiry_days: 0
+  key: random_signature_key
+  name: random_cookie_name
+credentials:
+  usernames:
+    jsmith:
+      email: jsmith@gmail.com
+      name: John Smith
+      password: $2b$12$Z9oCoGx7kYIPFOBxdHsDO.8iIL2Qpyd3u/7sNeWnkxYlbpiOjrG32
+pre-authorized:
+  emails:
+  - test@email.com
