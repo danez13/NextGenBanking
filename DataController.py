@@ -6,11 +6,14 @@ from mpl_toolkits.mplot3d import Axes3D
 from imblearn.under_sampling import RandomUnderSampler
 import yaml
 from yaml.loader import SafeLoader
+import json
 
 class fraudData:
+    def __init__(self):
+        self.cardFraud = self.SampleizeData()
 
     def SampleizeData(self):
-        cardFraud = pd.read_csv("creditcard.csv")
+        cardFraud = pd.read_csv("Database/creditcard.csv")
 
         rus = RandomUnderSampler()
 
@@ -26,8 +29,18 @@ class fraudData:
 
 class userData:
     def __init__(self):
-        with open("Database/users.yaml") as file:
+        with open("Database/users.yaml","r") as file:
             self.config = yaml.load(file, Loader=SafeLoader)
+        with open("Database/userTransaction.json","r") as file:
+            self.userTransactions = json.load(file)
+    def saveUserData(self):
+        with open("Database/users.yaml","w") as file:
+            yaml.dump(self.config,file)
+    def saveUserTransactions(self):
+        with open("Database/userTransaction.json","w") as file:
+            json.dump(self.userTransactions,file)
+        
+
 
 userDataController = userData()
 fraudDataController = fraudData()

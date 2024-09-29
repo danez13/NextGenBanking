@@ -9,12 +9,13 @@ authenticator = stauth.Authenticate(
     DataController.userDataController.config['cookie']['expiry_days'],
     DataController.userDataController.config['pre-authorized']
 )
-
 try:
-    email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(pre_authorization=False,captcha=True,clear_on_submit=True)
-    if email_of_registered_user:
-        DataController.userDataController.saveUserTransactions()
-        st.success('User registered successfully')
+    username_of_forgotten_password, email_of_forgotten_password, new_random_password = authenticator.forgot_password()
+    if username_of_forgotten_password:
+        st.success(f'New password: {new_random_password}')
+        DataController.userDataController.saveUserData()
+        # The developer should securely transfer the new password to the user.
+    elif username_of_forgotten_password == False:
+        st.error('Username not found')
 except Exception as e:
     st.error(e)
-    pass

@@ -11,10 +11,11 @@ authenticator = stauth.Authenticate(
 )
 
 try:
-    email_of_registered_user, username_of_registered_user, name_of_registered_user = authenticator.register_user(pre_authorization=False,captcha=True,clear_on_submit=True)
-    if email_of_registered_user:
-        DataController.userDataController.saveUserTransactions()
-        st.success('User registered successfully')
+    username_of_forgotten_username, email_of_forgotten_username = authenticator.forgot_username()
+    if username_of_forgotten_username:
+        st.success('Username to be sent securely')
+        st.success(f'New password: {username_of_forgotten_username}')
+    elif username_of_forgotten_username == False:
+        st.error('Email not found')
 except Exception as e:
     st.error(e)
-    pass
