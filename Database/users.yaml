@@ -8,6 +8,7 @@ credentials:
       email: testy@email.com
       logged_in: false
       name: Daniel
+      address: McDonald's, 10530 W Flagler St, Miami, FL 33174
       password: $2b$12$qUA1TmpO7Z9Q.7PM41XSeuVfrGcVV7a6qP/vV7aet6I6ajar0nevq
     jsmith:
       email: jsmith@gmail.com

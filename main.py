@@ -5,12 +5,6 @@ import random
 st.set_page_config(
     page_title="Login"
 )
-def makeTransaction(oneline,usedpin,usedchip,repeat,purchaseprice,location):
-    st.checkbox("online purchase?")
-    st.checkbox("was a pin used?")
-    st.checkbox("was the chip used?")
-    st.checkbox("repeat retailer?")
-    st.number_input("How much did you pay")
 
 authenticator = stauth.Authenticate(
     DataController.userDataController.config['credentials'],
